@@ -244,8 +244,6 @@ static NSArray * MKShapesFromGeoJSONFeatureCollection(NSDictionary *featureColle
 
 #pragma mark - GeometryCollection
 
-#pragma mark - Geometry Collection
-
 static MKPointAnnotation * MKPointAnnotationFromGeoJSONPointGeometry(NSDictionary *geometry) {
     
     NSCParameterAssert([geometry[@"type"] isEqualToString:@"Point"]);
@@ -352,6 +350,7 @@ static NSArray * MKPolygonsFromGeoJSONMultiPolygonGeometry(NSDictionary *geometr
 }
 
 static id MKShapeFromGeoJSONGeometry(NSDictionary *geometry) {
+    
     NSString *type = geometry[@"type"];
     
     if ([type isEqualToString:@"Point"]) {
@@ -372,6 +371,7 @@ static id MKShapeFromGeoJSONGeometry(NSDictionary *geometry) {
 }
 
 static NSArray * MKShapesFromGeoJSONGeometryCollection(NSDictionary *geometryCollection) {
+    
     NSCParameterAssert([geometryCollection[@"type"] isEqualToString:@"GeometryCollection"]);
     
     NSMutableArray *mutableShapes = [NSMutableArray array];
@@ -541,7 +541,8 @@ static NSDictionary * GeoJSONFeatureCollectionFromShapes(NSArray *shapes, NSArra
 
 #pragma mark - GeometryCollection
 
-+ (NSArray *)shapesFromGeoJSONGeometryCollection:(NSDictionary *)geometryCollection error:(NSError * __autoreleasing *)error
++ (NSArray *)shapesFromGeoJSONGeometryCollection:(NSDictionary *)geometryCollection 
+                                           error:(NSError * __autoreleasing *)error
 {
     @try {
         return MKShapesFromGeoJSONGeometryCollection(geometryCollection);

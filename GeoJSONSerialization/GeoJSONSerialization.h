@@ -42,6 +42,12 @@
 + (NSArray *)shapesFromGeoJSONFeatureCollection:(NSDictionary *)featureCollection
                                           error:(NSError * __autoreleasing *)error;
 
+/**
+ 
+ */
++ (NSArray *)shapesFromGeoJSONGeometryCollection:(NSDictionary *)geometryCollection 
+                                           error:(NSError * __autoreleasing *)error;
+
 /// @name Creating GeoJSON from MKShape objects
 
 /**
